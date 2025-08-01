@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOSEKAI - Anime Dropshipping Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #1b1f3a;
+            padding: 20px;
+            text-align: center;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: #ccc;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #fff;
+        }
+        .hero {
+            background: url('https://images.unsplash.com/photo-1623695858194-bf3b3b9b1456?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+        }
+        .hero h1 {
+            font-size: 48px;
+        }
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .product {
+            background-color: white;
+            padding: 20px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .product button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #1b1f3a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background-color: #333d6e;
+        }
+        .cart {
+            margin: 40px auto;
+            width: 90%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #1b1f3a;
+            color: #ccc;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">AOSEKAI</div>
+        <nav>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header><div class="hero">
+    <h1>Welcome to Aosekai – Dive Into the World of Anime</h1>
+</div>
+
+<section class="section" id="products">
+    <h2>Featured Products</h2>
+    <div class="products">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61y1v8i+8NL._AC_SL1500_.jpg" alt="Anime Figure">
+            <h3>Anime Action Figure</h3>
+            <p>$24.99</p>
+            <button onclick="addToCart('Anime Action Figure', 24.99)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71d1h6aC8vL._AC_SL1500_.jpg" alt="Anime T-shirt">
+            <h3>Graphic Anime Tee</h3>
+            <p>$19.99</p>
+            <button onclick="addToCart('Graphic Anime Tee', 19.99)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/81+KQFTi3JL._AC_SL1500_.jpg" alt="Anime Poster">
+            <h3>Wall Poster</h3>
+            <p>$12.99</p>
+            <button onclick="addToCart('Wall Poster', 12.99)">Add to Cart</button>
+        </div>
+    </div>
+</section>
+
+<section class="section cart" id="cart">
+    <h2>Shopping Cart</h2>
+    <ul id="cart-items"></ul>
+    <p><strong>Total:</strong> $<span id="total">0.00</span></p>
+</section>
+
+<section class="section" id="about">
+    <h2>About Aosekai</h2>
+    <p>Aosekai (Blue World) is your go-to anime-inspired store, bringing high-quality merchandise from your favorite shows. We dropship products worldwide with love and speed.</p>
+</section>
+
+<section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@aosekai.com</p>
+    <p>Phone: +91-XXXXXXXXXX</p> <!-- Replace with your number -->
+</section>
+
+<footer>
+    <p>&copy; 2025 Aosekai. All rights reserved.</p>
+</footer>
+
+<script>
+    let cart = [];
+
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartItems = document.getElementById("cart-items");
+        const total = document.getElementById("total");
+        cartItems.innerHTML = "";
+        let sum = 0;
+        cart.forEach((item, index) => {
+            const li = document.createElement("li");
+            li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+            cartItems.appendChild(li);
+            sum += item.price;
+        });
+        total.textContent = sum.toFixed(2);
+    }
+</script>
+
+</body>
+</html>
